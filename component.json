@@ -1,0 +1,152 @@
+{
+    "title": "ApiManagementClient",
+    "description": "Use these REST APIs for performing operations on Diagnostic entity associated with your Azure API Management deployment. Diagnostics are used to log requests/responses in the APIM proxy.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimdiagnostics/2018-06-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Diagnostic_ListByService": {
+            "main": "./lib/actions/Diagnostic_ListByService.js",
+            "title": "Lists all diagnostics of the API Management service instance.",
+            "description": "Lists all diagnostics of the API Management service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Diagnostic_ListByService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Diagnostic_Delete": {
+            "main": "./lib/actions/Diagnostic_Delete.js",
+            "title": "Deletes the specified Diagnostic.",
+            "description": "Deletes the specified Diagnostic.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Diagnostic_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Diagnostic_Get": {
+            "main": "./lib/actions/Diagnostic_Get.js",
+            "title": "Gets the details of the Diagnostic specified by its identifier.",
+            "description": "Gets the details of the Diagnostic specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Diagnostic_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Diagnostic_GetEntityTag": {
+            "main": "./lib/actions/Diagnostic_GetEntityTag.js",
+            "title": "Gets the entity state (Etag) version of the Diagnostic specified by its identifier.",
+            "description": "Gets the entity state (Etag) version of the Diagnostic specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Diagnostic_GetEntityTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Diagnostic_Update": {
+            "main": "./lib/actions/Diagnostic_Update.js",
+            "title": "Updates the details of the Diagnostic specified by its identifier.",
+            "description": "Updates the details of the Diagnostic specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Diagnostic_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Diagnostic_CreateOrUpdate": {
+            "main": "./lib/actions/Diagnostic_CreateOrUpdate.js",
+            "title": "Creates a new Diagnostic or updates an existing one.",
+            "description": "Creates a new Diagnostic or updates an existing one.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Diagnostic_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
